@@ -1,0 +1,20 @@
+.cuadricula{
+    border: 1px black solid;
+    height: 80px;
+   
+}
+
+.nombreDia{
+    font-size:2vw;
+}
+
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
+.horario{
+    font-size:3vw;
+    font-weight: bold;
+}
