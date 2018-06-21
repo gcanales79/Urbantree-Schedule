@@ -13,7 +13,7 @@
 #wrapper {
     margin-left:auto;
     margin-right:auto;
-    /*width:600px;*/
+   
     
 }
 
@@ -22,6 +22,11 @@
     font-weight: bold;
 }
 
-div{
-
-}
+@media (max-width: 576px) {
+    .nombreDia{
+        font-size:1.5vw;
+    };
+    #wrapper{
+        width:600px;
+    }
+ }
