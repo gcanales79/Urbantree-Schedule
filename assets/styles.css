@@ -8,12 +8,11 @@
 
 .nombreDia{
     font-size:14px;
-    color: #ffff;
     
 }
 
 .tituloDia{
-    font-size:14px;
+    font-size:20px;
 }
 
 #wrapper {
@@ -30,6 +29,7 @@
 
 .clasedisponible{
     background-color:green;
+    color:#ffff
 }
 
 .claseapuntodellenar{
@@ -38,6 +38,7 @@
 
 .clasellena{
     background-color: red;
+    color:#ffff;
 }
 
 @media (max-width: 767.98px) { 
