@@ -56,6 +56,11 @@ $("#apartadoClase").on("click", function (event) {
                 nombre: nombreSocio,
 
             })
+            $("#Respuesta").text("Tu clase a sido reservada con exito")
+            $("#contactName").empty();
+            $("#contactEmails").empty();
+            $("#fechaClase").empty();
+            $("#horarioClase").empty();
         }
 
     }
@@ -127,6 +132,10 @@ $("#apartadoClase").on("click", function (event) {
                 nombre: nombreSocio,
 
             })
+            $("#Respuesta").text("Tu clase a sido reservada con exito")
+            $("#contactName").empty();
+            $("#contactEmail").empty();
+            $("#fechaClase").empty();
         }
     }
 });

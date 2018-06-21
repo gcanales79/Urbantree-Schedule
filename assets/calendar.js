@@ -23,6 +23,18 @@ function celdaInfo(celdaNum){
     dataRef.ref().child("/"+celdaNum).on("value", function(snapshot) {
         var availableClases=totalClases - snapshot.numChildren();
         $("#"+celdaNum).text("Quedan " +availableClases + " lugares disponibles");
+        if(availableClases>2){
+            $("#"+celdaNum).addClass("clasedisponible");
+        }
+        else if(availableClases>0){
+            $("#"+celdaNum).removeClass("clasedisponible");
+            $("#"+celdaNum).addClass("claseapuntodellenar");
+        }
+        else if(availableClases==0){
+            $("#"+celdaNum).removeClass("calseapuntodellenar");
+            $("#"+celdaNum).addClass("clasellena");
+        }
+    
       })
 }
 
