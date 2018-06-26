@@ -9,6 +9,7 @@ var horariosSabado = ["9:00 a.m.", "10:00 a.m."]
 var diasSemana = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var codigoDia = ["A", "B", "C", "D", "E", "F"]
 var codigoHorario = ["1", "2", "3", "4", "5", "6", "7", "8"];
+var totalClases = 8;
 
 // Initialize Firebase
 var config = {
@@ -41,102 +42,133 @@ $("#apartadoClase").on("click", function (event) {
     var indexdia = diasSemana.indexOf(diaDelaSemana);
     var columnaHorario = codigoDia[indexdia];
     var columnaReglon = columnaHorario + renglonHorario;
+    console.log(columnaReglon);
 
 
-
-
-    if (diaDelaSemana === "Monday") {
-        var disponibilidad = horariosLunes.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+    dataRef.ref().child("/" + columnaReglon).once("value", function (snapshot) {
+        var availableClases = totalClases - snapshot.numChildren();
+        console.log(availableClases);
+        console.log("El dia de la semana es" + diaDelaSemana);
+        if (availableClases == 0) {
+            $("#Respuesta").text("Lo sentimos esa clase ya esta llena. Revisa el calendario para buscar opciones");
+            $("#contactName").val("");
+            $("#contactEmail").val("");
+            $("#fechaClase").val("");
         }
         else {
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
 
-            })
-            $("#Respuesta").text("Tu clase a sido reservada con exito")
-            $("#contactName").empty();
-            $("#contactEmails").empty();
-            $("#fechaClase").empty();
-            $("#horarioClase").empty();
-        }
+            if (diaDelaSemana === "Monday") {
+                var disponibilidad = horariosLunes.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
 
-    }
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
 
-    if (diaDelaSemana === "Tuesday") {
-        var disponibilidad = horariosMartes.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
-        }
-        else {
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
+                }
 
-            })
-        }
-    }
+            }
 
-    if (diaDelaSemana === "Wednesday") {
-        var disponibilidad = horariosMiercoles.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
-        }
-        else {
+            if (diaDelaSemana === "Tuesday") {
+                var disponibilidad = horariosMartes.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
 
-            })
-        }
-    }
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
+                }
+            }
 
-    if (diaDelaSemana === "Thursday") {
-        var disponibilidad = horariosJueves.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
-        }
-        else {
+            if (diaDelaSemana === "Wednesday") {
+                var disponibilidad = horariosMiercoles.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
 
-            })
-        }
-    }
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
+                }
+            }
 
-    if (diaDelaSemana === "Friday") {
-        var disponibilidad = horariosViernes.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
-        }
-        else {
+            if (diaDelaSemana === "Thursday") {
+                var disponibilidad = horariosJueves.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
 
-            })
-        }
-    }
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
+                }
+            }
 
-    if (diaDelaSemana === "Saturday") {
-        var disponibilidad = horariosSabado.indexOf(horarioClase)
-        if (disponibilidad < 0) {
-            $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
-        }
-        else {
+            if (diaDelaSemana === "Friday") {
+                var disponibilidad = horariosViernes.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
 
-            dataRef.ref().child(columnaReglon).push({
-                nombre: nombreSocio,
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
 
-            })
-            $("#Respuesta").text("Tu clase a sido reservada con exito")
-            $("#contactName").empty();
-            $("#contactEmail").empty();
-            $("#fechaClase").empty();
-        }
-    }
-});
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
+                }
+            }
 
+            if (diaDelaSemana === "Saturday") {
+                var disponibilidad = horariosSabado.indexOf(horarioClase)
+                if (disponibilidad < 0) {
+                    $("#Respuesta").text("Te recordamos que no tenemos clase en ese horario por favor selecciona otro horario")
+                }
+                else {
+
+                    dataRef.ref().child(columnaReglon).push({
+                        nombre: nombreSocio,
+
+                    })
+                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    $("#contactName").val("");
+                    $("#contactEmail").val("");
+                    $("#fechaClase").val("");
+                }
+            };
+        };
+
+    })
+
+})

@@ -16,7 +16,7 @@
 }
 
 #wrapper {
-    margin-left:auto;
+    margin-left:60px;;
     margin-right:auto;
    
     
@@ -48,4 +48,8 @@
     .tituloDia{
         font-size:25px;
     }
+}
+
+#barra{
+    color:#c1d72d;
 }
