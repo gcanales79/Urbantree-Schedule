@@ -24,6 +24,8 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
+
+
 $("#apartadoClase").on("click", function (event) {
     event.preventDefault();
     var nombreSocio = $("#contactName").val();
@@ -45,7 +47,7 @@ $("#apartadoClase").on("click", function (event) {
     console.log(columnaReglon);
 
 
-    dataRef.ref().child("/" + columnaReglon).once("value", function (snapshot) {
+    dataRef.ref().child("/" + horarioEscogidomodificado).once("value", function (snapshot) {
         var availableClases = totalClases - snapshot.numChildren();
         console.log(availableClases);
         console.log("El dia de la semana es" + diaDelaSemana);
@@ -65,7 +67,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
@@ -85,7 +87,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
@@ -103,7 +105,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
@@ -121,7 +123,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
@@ -139,7 +141,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
@@ -157,7 +159,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(columnaReglon).push({
+                    dataRef.ref().child(horarioEscogidomodificado).push({
                         nombre: nombreSocio,
 
                     })
