@@ -23,13 +23,49 @@ var config = {
 firebase.initializeApp(config);
 
 var dataRef = firebase.database();
+var nombreSocio ;
+var sesionesDisponibles;
+var finDePaquete;
+var emailSocio;
+
+$("#buscarDatos").on("click", function (event) {
+    event.preventDefault();
+    emailSocio = $("#contactEmail").val();
+    console.log(emailSocio);
+    dataRef.ref().child("/socias").orderByChild("emailSocio").equalTo(emailSocio).on("value", function (snapshot) {
+        console.log(snapshot.val());
+        snapshot.forEach(function (childSnapshot) {
+
+            var key = childSnapshot.key;
+            var childData = childSnapshot.val();
+
+            //*Estos son los datos del socio
+            nombreSocio = childData.nombreSocio;
+            sesionesDisponibles = childData.numSesiones;
+            finDePaquete = childData.finPaquete;
+
+            if (sesionesDisponibles > 0) {
+                //this will be the actual email value found
+                $("#bienvenidaSocia").text("Hola " + nombreSocio + " tienes " + sesionesDisponibles + " sesiones disponibles y se vencen el " + finDePaquete);
+                //*Esto permite que se active el boton para apartar clase
+                $("#apartadoClase").prop("disabled", false)
+            }
+            else {
+                $("#bienvenidaSocia").text("Hola " + nombreSocio + " ya no tienes sesiones disponibles te invitamos a renovar tu paquete")
+            }
+
+        });
+
+
+
+    });
+})
 
 
 
 $("#apartadoClase").on("click", function (event) {
     event.preventDefault();
-    var nombreSocio = $("#contactName").val();
-    var emailSocio = $("#contactEmail").val();
+
     diaClase = $("#fechaClase").val();
     var horarioClase = $("#horarioClase").val();
     var convertedDate = moment(diaClase, randomFormat);
@@ -71,10 +107,12 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones");
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
 
                 }
 
@@ -91,10 +129,12 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
                 }
             }
 
@@ -109,10 +149,12 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
                 }
             }
 
@@ -127,10 +169,12 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
                 }
             }
 
@@ -145,10 +189,14 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones.")
+
+
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
                 }
             }
 
@@ -163,10 +211,12 @@ $("#apartadoClase").on("click", function (event) {
                         nombre: nombreSocio,
 
                     })
-                    $("#Respuesta").text("Tu clase a sido reservada con exito")
+                    sesionesDisponibles--
+                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
                     $("#contactName").val("");
                     $("#contactEmail").val("");
                     $("#fechaClase").val("");
+                    restarClase();
                 }
             };
         };
@@ -174,3 +224,12 @@ $("#apartadoClase").on("click", function (event) {
     })
 
 })
+
+//*Funcion para restar clases
+
+function restarClase() {
+    var query = dataRef.ref("/socias").orderByChild("emailSocio").equalTo(emailSocio);
+    query.once("child_added", function (snapshot) {
+        snapshot.ref.update({ numSesiones:sesionesDisponibles })
+    })
+}
