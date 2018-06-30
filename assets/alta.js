@@ -11,32 +11,69 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
+var emailSocio;
+var nombreSocio;
+var numSocio;
+var numSesiones;
+var inicioPaquete;
+var finPaquete;
+
 $("#altaSocio").on("click", function (event) {
     event.preventDefault();
-    var nombreSocio=$("#contactName").val();
-    var emailSocio=$("#contactEmail").val();
-    var numSocio=$("#numSocio").val();
-    var numSesiones=parseInt($("#numSesiones").val());
-    var inicioPaquete=$("#inicioPaquete").val();
-    var finPaquete=$("#finPaquete").val();
+    nombreSocio = $("#contactName").val();
+    emailSocio = $("#contactEmail").val();
+    numSocio = $("#numSocio").val();
+    numSesiones = parseInt($("#numSesiones").val());
+    inicioPaquete = $("#inicioPaquete").val();
+    finPaquete = $("#finPaquete").val();
+
+    revisarEmail();
 
 
     //* Alta de Socio en la base de datos
+
+})
+
+
+//* Revisa si el correo ya esta en la base de datos
+function revisarEmail() {
+    var query = dataRef.ref("/socias").orderByChild("emailSocio").equalTo(emailSocio);
+    query.once("value", function (snapshot) {
+        var existeCorreo = snapshot.exists();
+        if (existeCorreo == false) {
+            altaSocio();
+        }
+        else {
+            $("#Respuesta").text("Ese correo ya esta dado de alta en la base de datos, no se puede dar de alta al socio");
+            $("#contactName").val("");
+            $("#contactEmail").val("");
+            $("#numSocio").val("");
+            $("#numSesiones").val("");
+            $("#inicioPaquete").val("");
+            $("#finPaquete").val("");
+        }
+    })
+}
+
+
+//* Proceso para dar de alta al socio
+function altaSocio() {
     dataRef.ref().child("/socias").push({
-       nombreSocio: nombreSocio,
-       emailSocio: emailSocio,
-       numSocio: numSocio,
-       numSesiones: numSesiones,
-       inicioPaquete: inicioPaquete,
-       finPaquete: finPaquete
+        nombreSocio: nombreSocio,
+        emailSocio: emailSocio,
+        numSocio: numSocio,
+        numSesiones: numSesiones,
+        inicioPaquete: inicioPaquete,
+        finPaquete: finPaquete
 
     })
 
     $("#Respuesta").text("El socio fue dado de alta exitosamente")
-    $("#contactName").empty();
-    $("#contactEmail").empty();
-    $("#numSocio").empty();
-    $("#numSesiones").empty();
-    $("#inicioPaquete").empty();
-    $("#finPaquete").empty();
-})
+    $("#contactName").val("");
+    $("#contactEmail").val("");
+    $("#numSocio").val("");
+    $("#numSesiones").val("");
+    $("#inicioPaquete").val("");
+    $("#finPaquete").val("");
+
+}
