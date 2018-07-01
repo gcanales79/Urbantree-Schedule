@@ -2,314 +2,144 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Urbantree Schedule</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Urbantree Schedule</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">Urbantree</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Calendario Socias
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="calendario.html">Calendario Urban</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="forma.html">Aparta tu clase</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="altasocios.html">Alta Socios</a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://web.facebook.com/urbantreepilates">
+            <img src="assets/logo_urban.jpg" width="120" height="50" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Calendario Urban</a>
+                    <span class="sr-only">(current)</span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="forma.html">Aparta tu clase
+                    </a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <div>
+        <input type="button" value="Semana Actual" class="btn btn-info" id="revisarSemanaactual">
+        <input type="button" value="Semana Siguiente" class="btn btn-info" id="revisarSemanasiguiente">
     </div>
-  </nav>
-  <div id="wrapper">
-    <div class="row cuadricula seven-cols" id="diaDelaSemana">
-      <div class="col  cuadricula tituloDia" posicion="Horario">
-        <p>Horario</p>
-
-      </div>
-      <div class="col  cuadricula tituloDia" posicion="Lunes">
-        <p>Lun</p>
-
-      </div>
-
-      <div class="col  cuadricula tituloDia" posicion="Martes">
-        <p>Mar</p>
-
-
-      </div>
-      <div class="col  cuadricula tituloDia" posicion="Miercoles">
-        <p>Mie</p>
-      </div>
-      <div class="col  cuadricula tituloDia" posicion="Jueves">
-        <p>Jue</p>
-
-      </div>
-      <div class="col  cuadricula tituloDia" posicion="Viernes">
-        <p>Vie</p>
-
-      </div>
-      <div class="col  cuadricula tituloDia" posicion="Sabado">
-        <p>Sab</p>
-
-      </div>
-
-    </div>
-
-
-    <div class="row borde cuadricula seven-cols" id="horario7">
-      <div class="col  cuadricula tituloDia" posicion="Horario7">
-        <p>7:00 a.m.
-        </p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A1" posicion="Lunes7">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B1" posicion="Martes7">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C1" posicion="Miercoles7">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D1" posicion="Jueves7">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E1" posicion="Viernes7">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F1" posicion="Sabado7">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario8">
-      <div class="col  cuadricula tituloDia" posicion="Horario8">
-        <p>8:00 a.m.</p>
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="A2" posicion="Lunes8">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B2" posicion="Martes8">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C2" posicion="Miercoles8">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D2" posicion="Jueves8">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E2" posicion="Viernes8">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F2" posicion="Sabado8">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario9">
-      <div class="col  cuadricula tituloDia" posicion="Horario9">
-        <p>9:00 a.m.</p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A3" posicion="Lunes9">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B3" posicion="Martes9">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C3" posicion="Miercoles9">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D3" posicion="Jueves9">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E3" posicion="Viernes9">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F3" posicion="Sabado9">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario10">
-      <div class="col  cuadricula tituloDia" posicion="Horario10">
-        <p>10:00 a.m.</p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A4" posicion="Lunes10">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B4" posicion="Martes10">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C4" posicion="Miercoles10">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D4" posicion="Jueves10">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E4" posicion="Viernes10">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F4" posicion="Sabado10">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario17">
-      <div class="col  cuadricula tituloDia" posicion="Horario17">
-        <p>5:00 p.m.</p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A5" posicion="Lunes17">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B5" posicion="Martes17">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C5" posicion="Miercoles17">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D5" posicion="Jueves17">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E5" posicion="Viernes17">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F5" posicion="Sabado17">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario18">
-      <div class="col  cuadricula tituloDia" posicion="Horario18">
-        <p>6:00 p.m.</p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A6" posicion="Lunes18">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B6" posicion="Martes18">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C6" posicion="Miercoles18">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D6" posicion="Jueves18">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E6" posicion="Viernes18">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F6" posicion="Sabado18">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario19">
-      <div class="col  cuadricula tituloDia" posicion="Horario19">
-        <p>7:00 p.m.
-        </p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A7" posicion="Lunes19">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B7" posicion="Martes19">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C7" posicion="Miercoles19">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D7" posicion="Jueves19">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E7" posicion="Viernes19">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F7" posicion="Sabado19">
-
-      </div>
-
-    </div>
-    <div class="row cuadricula seven-cols" id="horario20">
-      <div class="col  cuadricula tituloDia" posicion="Horario20">
-        <p>8:00 p.m.
-        </p>
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="A8" posicion="Lunes20">
-
-      </div>
-
-      <div class="col  cuadricula nombreDia" id="B8" posicion="Martes20">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="C8" posicion="Miercoles20">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="D8" posicion="Jueves20">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="E8" posicion="Viernes20">
-
-      </div>
-      <div class="col  cuadricula nombreDia" id="F8" posicion="Sabado20">
-
-      </div>
-
-    </div>
-    <div class="row" id=leyendaverde>
-      <div class="col-5 clasedisponible">
-        Clase Disponible
-      </div>
-    </div>
-    <div class="row" id=leyendaamarilla>
-      <div class="col-5 claseapuntodellenar">
-        Clase con 2 lugares o menos disponibles
-      </div>
-    </div>
-    <div class="row" id=leyendaroja>
-      <div class="col-5 clasellena">
-        Clase Llena
-      </div>
-    </div>
-
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-  <script src="assets/calendar.js"></script>
-  <script src="assets/app.js"></script>
+    <br>
+
+
+    <table class="table">
+        <thead>
+            <tr id=firstRow>
+                <th>Horario</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id=secondRow>
+                <th>7:00 a.m.</th>
+                <th id="A1"></th>
+                <th id="B1"></th>
+                <th id="C1"></th>
+                <th id="D1"></th>
+                <th id="E1"></th>
+                <th id="F1"></th>
+            </tr>
+            <tr id=thirdRow>
+                <th>8:00 a.m.</th>
+                <th id="A2"></th>
+                <th id="B2"></th>
+                <th id="C2"></th>
+                <th id="D2"></th>
+                <th id="E2"></th>
+                <th id="F2"></th>
+            </tr>
+            <tr id=forthRow>
+                <th>9:00 a.m.</th>
+                <th id="A3"></th>
+                <th id="B3"></th>
+                <th id="C3"></th>
+                <th id="D3"></th>
+                <th id="E3"></th>
+                <th id="F3"></th>
+            </tr>
+            <tr id=fifthRow>
+                <th>10:00 a.m.</th>
+                <th id="A4"></th>
+                <th id="B4"></th>
+                <th id="C4"></th>
+                <th id="D4"></th>
+                <th id="E4"></th>
+                <th id="F4"></th>
+            </tr>
+            <tr id=sixthRow>
+                <th>5:00 p.m.</th>
+                <th id="A5"></th>
+                <th id="B5"></th>
+                <th id="C5"></th>
+                <th id="D5"></th>
+                <th id="E5"></th>
+                <th id="F5"></th>
+            </tr>
+            <tr id=seventhRow>
+                <th>6:00 p.m.</th>
+                <th id="A6"></th>
+                <th id="B6"></th>
+                <th id="C6"></th>
+                <th id="D6"></th>
+                <th id="E6"></th>
+                <th id="F6"></th>
+            </tr>
+            <tr id=eightRow>
+                <th>7:00 p.m.</th>
+                <th id="A7"></th>
+                <th id="B7"></th>
+                <th id="C7"></th>
+                <th id="D7"></th>
+                <th id="E7"></th>
+                <th id="F7"></th>
+            </tr>
+            <tr id=ninethRow>
+                <th>8:00 p.m.</th>
+                <th id="A7"></th>
+                <th id="B7"></th>
+                <th id="C7"></th>
+                <th id="D7"></th>
+                <th id="E7"></th>
+                <th id="F7"></th>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="assets/urbancalendar.js"></script>
 </body>
 
 </html>
