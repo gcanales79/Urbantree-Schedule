@@ -9,6 +9,7 @@ var horariosSabado = ["9:00 a.m.", "10:00 a.m."]
 var diasSemana = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var codigoDia = ["A", "B", "C", "D", "E", "F"]
 var codigoHorario = ["1", "2", "3", "4", "5", "6", "7", "8"];
+//!Este es la cantidad de camas disponibles
 var totalClases = 8;
 
 // Initialize Firebase
