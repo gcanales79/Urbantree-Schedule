@@ -20,13 +20,9 @@ var sabado;
 
 $("#revisarSemanaactual").on("click", function (event) {
     event.preventDefault();
-    $("#A1").empty();
-    $("#B1").empty();
-    $("#C1").empty();
-    $("#D1").empty();
-    $("#E1").empty();
-    $("#F1").empty();
-    lunes = moment("2018-06-25").format("YYYY-MM-DD")
+    clearRows();
+    //*!Eset dato se debe cambiar semanalmente
+    lunes = moment("2018-07-02").format("YYYY-MM-DD")
     martes = moment(lunes).add(1, "day").format("YYYY-MM-DD");
     miercoles = moment(lunes).add(2, "day").format("YYYY-MM-DD");
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
@@ -40,13 +36,9 @@ $("#revisarSemanaactual").on("click", function (event) {
 
 $("#revisarSemanasiguiente").on("click", function (event) {
     event.preventDefault();
-    $("#A1").empty();
-    $("#B1").empty();
-    $("#C1").empty();
-    $("#D1").empty();
-    $("#E1").empty();
-    $("#F1").empty();
-    lunes = moment("2018-07-02").format("YYYY-MM-DD")
+    clearRows();
+    //*!Este dato se debe cambiar semanalmente
+    lunes = moment("2018-07-09").format("YYYY-MM-DD")
     martes = moment(lunes).add(1, "day").format("YYYY-MM-DD");
     miercoles = moment(lunes).add(2, "day").format("YYYY-MM-DD");
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
@@ -461,5 +453,16 @@ function calendarUrban() {
 
 }
 
+//Funcion para limpiar los datos de la tabla
+function clearRows(){
+    for(var i=1;i<9;i++){
+        $("#A"+i).empty();
+        $("#B"+i).empty();
+        $("#C"+i).empty();
+        $("#D"+i).empty();
+        $("#E"+i).empty();
+        $("#F"+i).empty();
+        }
+}
 
 
