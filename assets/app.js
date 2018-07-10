@@ -24,14 +24,14 @@ var config = {
 firebase.initializeApp(config);
 
 var dataRef = firebase.database();
-var nombreSocio ;
+var nombreSocio;
 var sesionesDisponibles;
 var finDePaquete;
 var emailSocio;
 
 $("#buscarDatos").on("click", function (event) {
     event.preventDefault();
-    emailSocio = $("#contactEmail").val();
+    emailSocio = $("#contactEmail").val().trim();
     console.log(emailSocio);
     dataRef.ref().child("/socias").orderByChild("emailSocio").equalTo(emailSocio).on("value", function (snapshot) {
         console.log(snapshot.val());
@@ -104,16 +104,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones");
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                   buscarSocio(horarioEscogidomodificado);
 
                 }
 
@@ -126,16 +117,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                    buscarSocio(horarioEscogidomodificado);
                 }
             }
 
@@ -146,16 +128,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                    buscarSocio(horarioEscogidomodificado);
                 }
             }
 
@@ -166,16 +139,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                    buscarSocio(horarioEscogidomodificado);
                 }
             }
 
@@ -186,18 +150,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones.")
-
-
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                    buscarSocio(horarioEscogidomodificado);
                 }
             }
 
@@ -208,16 +161,7 @@ $("#apartadoClase").on("click", function (event) {
                 }
                 else {
 
-                    dataRef.ref().child(horarioEscogidomodificado).push({
-                        nombre: nombreSocio,
-
-                    })
-                    sesionesDisponibles--
-                    $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones")
-                    $("#contactName").val("");
-                    $("#contactEmail").val("");
-                    $("#fechaClase").val("");
-                    restarClase();
+                    buscarSocio(horarioEscogidomodificado);
                 }
             };
         };
@@ -231,6 +175,30 @@ $("#apartadoClase").on("click", function (event) {
 function restarClase() {
     var query = dataRef.ref("/socias").orderByChild("emailSocio").equalTo(emailSocio);
     query.once("child_added", function (snapshot) {
-        snapshot.ref.update({ numSesiones:sesionesDisponibles })
+        snapshot.ref.update({ numSesiones: sesionesDisponibles })
+    })
+}
+
+
+//*Buscar si no tiene clase a esa hora ese dia para evitar repetidos
+function buscarSocio(horarioEscogidomodificado) {
+    dataRef.ref().child("/" + horarioEscogidomodificado).orderByChild("email").equalTo(emailSocio).once("value", function (snapshot) {
+        if (snapshot.exists()) {
+            $("#Respuesta").text("No te pudimos reservar en ese horario porque ya tienes una clase reservada en ese mismo horario")
+        }
+        else{
+            dataRef.ref().child(horarioEscogidomodificado).push({
+                nombre: nombreSocio,
+                email: emailSocio,
+
+
+            })
+            sesionesDisponibles--
+            $("#Respuesta").text("Tu clase a sido reservada con exito, te quedan " + sesionesDisponibles + " sesiones");
+            $("#contactName").val("");
+            $("#contactEmail").val("");
+            $("#fechaClase").val("");
+            restarClase();
+        }
     })
 }

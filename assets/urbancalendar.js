@@ -22,7 +22,7 @@ $("#revisarSemanaactual").on("click", function (event) {
     event.preventDefault();
     clearRows();
     //*!Eset dato se debe cambiar semanalmente
-    lunes = moment("2018-07-02").format("YYYY-MM-DD")
+    lunes = moment("2018-07-09").format("YYYY-MM-DD")
     martes = moment(lunes).add(1, "day").format("YYYY-MM-DD");
     miercoles = moment(lunes).add(2, "day").format("YYYY-MM-DD");
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
@@ -38,7 +38,7 @@ $("#revisarSemanasiguiente").on("click", function (event) {
     event.preventDefault();
     clearRows();
     //*!Este dato se debe cambiar semanalmente
-    lunes = moment("2018-07-09").format("YYYY-MM-DD")
+    lunes = moment("2018-07-16").format("YYYY-MM-DD")
     martes = moment(lunes).add(1, "day").format("YYYY-MM-DD");
     miercoles = moment(lunes).add(2, "day").format("YYYY-MM-DD");
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
@@ -203,7 +203,7 @@ function calendarUrban() {
 
     //*Row for 10:00 a.m. classes
 
-    dataRef.ref("/" + lunes + "7¿1000am").on("child_added", function (childSnapshot) {
+    dataRef.ref("/" + lunes + "1000am").on("child_added", function (childSnapshot) {
         var name = childSnapshot.val().nombre;
         var list = $("<li>");
         list.attr = ("value", name);
