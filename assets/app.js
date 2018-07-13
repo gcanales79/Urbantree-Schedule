@@ -32,9 +32,9 @@ var emailSocio;
 $("#buscarDatos").on("click", function (event) {
     event.preventDefault();
     emailSocio = $("#contactEmail").val().trim();
-    console.log(emailSocio);
+    //console.log(emailSocio);
     dataRef.ref().child("/socias").orderByChild("emailSocio").equalTo(emailSocio).on("value", function (snapshot) {
-        console.log(snapshot.val());
+       // console.log(snapshot.val());
         snapshot.forEach(function (childSnapshot) {
 
             var key = childSnapshot.key;
@@ -73,7 +73,7 @@ $("#apartadoClase").on("click", function (event) {
     var diaDelaSemana = moment(convertedDate).format("dddd");
     var horarioEscogido = diaClase + horarioClase;
     var horarioEscogidomodificado = horarioEscogido.replace(/\.|\s|:/g, "");
-    console.log(horarioEscogidomodificado)
+    //console.log(horarioEscogidomodificado)
 
     //codificar el horario y dia seleccionado
     var indexhorario = horariosLunes.indexOf(horarioClase);
@@ -81,13 +81,13 @@ $("#apartadoClase").on("click", function (event) {
     var indexdia = diasSemana.indexOf(diaDelaSemana);
     var columnaHorario = codigoDia[indexdia];
     var columnaReglon = columnaHorario + renglonHorario;
-    console.log(columnaReglon);
+    //console.log(columnaReglon);
 
 
     dataRef.ref().child("/" + horarioEscogidomodificado).once("value", function (snapshot) {
         var availableClases = totalClases - snapshot.numChildren();
-        console.log(availableClases);
-        console.log("El dia de la semana es" + diaDelaSemana);
+        //console.log(availableClases);
+        //console.log("El dia de la semana es" + diaDelaSemana);
         if (availableClases == 0) {
             $("#Respuesta").text("Lo sentimos esa clase ya esta llena. Revisa el calendario para buscar opciones");
             $("#contactName").val("");

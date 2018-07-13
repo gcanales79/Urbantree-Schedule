@@ -28,7 +28,7 @@ $("#revisarSemanaactual").on("click", function (event) {
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
     viernes = moment(lunes).add(4, "day").format("YYYY-MM-DD");
     sabado = moment(lunes).add(5, "day").format("YYYY-MM-DD");
-    console.log(lunes + "700am");
+    //console.log(lunes + "700am");
 
     calendarUrban();
 
@@ -44,7 +44,7 @@ $("#revisarSemanasiguiente").on("click", function (event) {
     jueves = moment(lunes).add(3, "day").format("YYYY-MM-DD");
     viernes = moment(lunes).add(4, "day").format("YYYY-MM-DD");
     sabado = moment(lunes).add(5, "day").format("YYYY-MM-DD");
-    console.log(lunes + "700am");
+    //console.log(lunes + "700am");
 
     calendarUrban();
 
